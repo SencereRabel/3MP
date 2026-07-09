@@ -1,3 +1,4 @@
+```
 docs/
 ├── README.md                 # Documentation index (Manually Updated)
 ├── getting-started/
@@ -36,3 +37,4 @@ docs/
 │   ├── common-errors.md      # (Set and Forget)
 │   └── faq.md                # (Set and Forget)
 └── assets/                   # (Manually Updated)
+```
