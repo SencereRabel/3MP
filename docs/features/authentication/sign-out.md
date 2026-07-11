@@ -2,7 +2,7 @@
 
 As a user, I want to sign out of my account so that my session is securely ended and my account is protected.
 
-<img width="410" height="882" alt="Image" src="https://github.com/user-attachments/assets/4e505bef-d4f8-4d60-a3fa-767743e00c9c" />
+![sign-out-return-to-sign-in](../../assets/sign-out-return-to-sign-in.jpg)
 
 **Acceptance Criteria**
 
