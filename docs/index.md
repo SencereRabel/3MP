@@ -1,6 +1,6 @@
 ```
 docs/
-├── README.md                 # Documentation index (Manually Updated)
+├── index.md                 # Documentation index (Manually Updated)
 ├── getting-started/
 │   ├── installation.md       # Setup and requirements (Set and Forget)
 │   ├── configuration.md      # Environment variables & config (Set and Forget)
