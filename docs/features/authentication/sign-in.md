@@ -1,7 +1,8 @@
 # User Story
+
 As a user, I want to sign in to my account so that I can access my profile and app features securely.
 
-<img width="410" height="1048" alt="Image" src="https://github.com/user-attachments/assets/051c7161-9526-4248-9292-099d21ecccb1" />
+![sign-in-main](../../assets/sign-in-main.jpg)
 
 **Acceptance Criteria**
 
