@@ -108,8 +108,6 @@ Authentication
 
   Response:
 
-  Response:
-
   ```json
   {
     "error": null || {
@@ -123,25 +121,285 @@ Authentication
   ```
 
 - `POST /auth/forgot-password`
+  Body:
+
+  ```json
+  {
+    "email": "valeta.iac@gmail.com"
+  }
+  ```
+
+  Response:
+
+  ```json
+  {
+    "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+    "data": {
+      "message": "Temporary password sent to email."
+    }
+  }
+
+  ```
+
 - `POST /auth/reset-password`
+
+  Body:
+
+  ```json
+  {
+    "email": "valeta.iac@gmail.com"
+    "temporaryPassword": "hyt-73u-sak"
+    "newPassword": "CatsLuv3Me!!!"
+  }
+  ```
+
+  Response:
+
+  ```json
+  {
+    "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+    "data": {
+      "message": "Password Reset Successfully."
+    }
+  }
+  ```
+
 - `GET /auth/me`
+
+  Header:
+
+  ```http
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+    "data": {
+      "user": {
+        "authenticated": true,
+        "userId": "16289H",
+        "sessionId": "sess_456",
+        "expiresAt": "2026-07-20T14:00:00Z"
+
+      }
+    }
+  ```
 
 User
 
 - `GET /users/me`
+
+  Header:
+
+  ```http
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+    "data": {
+      "message": "Profile retrieved successfully.",
+      "user": {
+        "userId": "16289H",
+        "firstName": "Ian",
+        "lastName": "Valeta",
+        "email": "valeta.iac@gmail.com",
+        "isBusy": false
+      }
+    }
+  ```
+
 - `PATCH /users/me`
+
+  Header:
+
+  ```http
+  Cookie: session_token=abc123xyz
+  ```
+
+  Body:
+
+  ```json
+  {
+    "firstName": "Ian",
+    "lastName": "Valeta",
+    "email": "valeta.iac@gmail.com",
+    "currentPassword": "******",
+    "newPassword": "CatsLuv3Me!!!",
+    "isBusy": false
+  }
+  ```
+
+  Response:
+
+  ```json
+  "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+    "data": {
+      "message": "Profile updated successfully.",
+      "user": {
+        "userId": "16289H",
+        "firstName": "Ian",
+        "lastName": "Valeta",
+        "email": "valeta.iac@gmail.com",
+        "isBusy": false
+      }
+    }
+  ```
+
 - `DELETE /users/me`
+
+  Header:
+
+  ```http
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+    "data": {
+      "message": "Profile deleted successfully.",
+    }
+  ```
 
 Friends
 
 - `GET /friends`
-- `POST /friends`
+
+  Header:
+
+  ```http
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+    "friends": [
+      {
+        "userId": "16289H",
+        "firstName": "Ian",
+        "lastName": "Valeta",
+        "email": "valeta.iac@gmail.com",
+        "isBusy": false
+      },
+      ...
+    ]
+  ```
+
+- `POST /friends/:friend-id`
+
+  Header:
+
+  ```http
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  {
+    "error": null || {
+        "code": "Error Title",
+        "message": "Error Description"
+      },
+    "message": "Added Friend"
+  }
+  ```
+
 - `Delete /friends/:friend-id`
+
+  Header:
+
+  ```http
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  {
+    "error": null || {
+        "code": "Error Title",
+        "message": "Error Description"
+      },
+    "message": "Deleted Friend"
+  }
+  ```
 
 Sessions
 
 - `GET /sessions/current`
+
+  Header:
+
+  ```HTTP
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  {
+    "error": null,
+    "data": {
+      "message": "Session retrieved successfully.",
+      "session": {
+        "sessionId": "sess_456",
+        "userId": "16289H",
+        "createdAt": "2026-07-19T14:00:00Z",
+        "lastActivityAt": "2026-07-20T13:52:14Z",
+        "expiresAt": "2026-07-20T14:00:00Z"
+      }
+    }
+  }
+  ```
+
 - `DELETE /sessions/current`
+
+  Header:
+
+  ```HTTP
+  Cookie: session_token=abc123xyz
+  ```
+
+  Response:
+
+  ```json
+  {
+    "error": null,
+    "data": {
+      "message": "Session terminated successfully."
+    }
+  }
+  ```
 
 <!-- EMAIL NOTIFICATIONS SUBDOMAIN -->
 
