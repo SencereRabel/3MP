@@ -1,6 +1,6 @@
 ```
 docs/
-├── index.md                 # Documentation index (Manually Updated)
+├── index.md                 # 🚧WIP
 ├── getting-started/
 │   ├── installation.md       # Setup and requirements (Set and Forget)
 │   ├── configuration.md      # Environment variables & config (Set and Forget)
@@ -9,26 +9,24 @@ docs/
 │   ├── overview.md           # System architecture  (Manually Updated)
 │   ├── frontend.md           # Frontend design  (Manually Updated)
 │   ├── backend.md            # Backend design  (Manually Updated)
-│   ├── database.md           # Schema & relationships  (Set and Forget)
+│   ├── database.md           # Schema & relationships  ✅ NEEDS REVIEW
+│   ├── api.md 🚧WIP(Description, Endpoints, Input / Output, Errors / Edge Cases)
 │   └── authentication.md     # Auth flow & permissions (Set and Forget)
-├── features/ # I think having all docs for each feature in one file makes most sense (Manually Updated)
-│   ├── sign-in.md
-│   ├── sign-out.md
-│   ├── create-account.md
-│   ├── modify-profile.md
-│   ├── forgot-password.md
-│   ├── friend-list.md
-│   ├── add-friend.md
-│   ├── remove-friend.md
-│   ├── modify-self-status.md
-├── api/
-│   ├── overview.md           # API basics (Manually Updated)
-│   ├── endpoints.md          # Endpoint reference (Set and Forget)
-│   └── errors.md              # Error responses (Manually Updated)
+├── features/ (Manually Updated)
+│   ├── sign-in.md ✅ 
+│   ├── sign-out.md ✅ 
+│   ├── create-account.md ✅ 
+│   ├── modify-profile.md ✅ 
+│   ├── forgot-password.md ✅ 
+│   ├── friend-list.md ✅ 
+│   ├── add-friend.md ✅ 
+│   ├── remove-friend.md ✅ 
+│   ├── modify-self-status.md ✅ 
 ├── development/
-│   ├── coding-standards.md   #(Set and Forget)
-│   ├── testing.md           # (Set and Forget)
-│   └── git-workflow.md      # (Set and Forget)
+│   ├── coding-standards.md   # ✅ (DONE)
+│   ├── front-end-testing.md  # 🚧WIP(Jest / React Testing Library / UNIX Commands)
+│   ├── back-end-testing.md   # 🚧WIP(PyTest / UNIX Commands)
+│   └── git-workflow.md       # 🚧WIP(Set and Forget)
 ├── deployment/
 │   ├── deployment.md         # (Set and Forget)
 │   ├── ci-cd.md              # (Set and Forget)

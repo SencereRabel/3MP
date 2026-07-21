@@ -1,307 +1,367 @@
-## Domain
-
-<!-- PUBLIC WEBSITE -->
-
-**SEO Website:** app_name.com
-
-- `/` → (Home Page)
-- `/about` → (About)
-- `/features` → (Features)
-- `/pricing` → (Pricing)
-- `/blog` → (Blog)
-- `/contact` → (Contact)
-- `/frequently-asked-questions` → (FAQ)
-- `/privacy-policy` → (Privacy Policy) `no-index`
-- `/terms-of-service` → (Terms of Service) `no-index`
-
 ## Subdomains
 
-<!-- WEB APPLICATION SUBDOMAIN -->
+**1. SEO Website** `app_name.com`: Used for Marketing
 
-**Web Application:** `app.app_name.com`
+**2. Web Application:** `app.app_name.com`: Used for actual application
 
-- `/`
-  - unauthenticated → (Sign-In Page)
-  - authenticated → (Friends List Page)
-- `/create-account` (Create Account Page)
+**3. REST API:** `api.app_name.com/v1`: Backend Public URL
 
-- `/forgot-password` → (Forgot Password Page)
-- `/reset-password` → (Reset Password Page)
-- `/sign-out`
-  - unauthenticated → (Sign-In Page)
-  - authenticated → (Sign-Out Page)
-- `/modify-profile`
-  - unauthenticated → (Sign-In Page)
-  - authenticated → (Modify Profile Page)
-- `/add-friend`
-  - unauthenticated → (Sign-In Page)
-  - authenticated → (Add Friend Page)
-- `/remove-friend`
-  - unauthenticated → (Sign-In Page)
-  - authenticated → (Remove Friend Page)
+**4. Automated Email:** `notify.app_name.com`: Used for Automated Mail Notifications
 
-<!-- API SUBDOMAIN -->
+### 1. Public SEO Website
 
-**REST API:** `api.app_name.com/v1`
+`/` → (Home Page)
 
-Authentication
+`/about` → (About)
 
-- `POST /auth/register` → (Create Account)
+`/features` → (Features)
 
-  Body:
+`/pricing` → (Pricing)
 
-  ```json
-  {
-    "firstName": "Ian",
-    "lastName": "Valeta",
-    "email": "valeta.iac@gmail.com",
-    "password": "UserEnteredPassword123!"
-  }
-  ```
+`/blog` → (Blog)
 
-  Response:
+`/contact` → (Contact)
 
-  ```json
-  {
-    "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "Account created successfully."
-    }
-  }
-  ```
+`/frequently-asked-questions` → (FAQ)
 
-- `POST /auth/login` → (Log In)
+`/privacy-policy` → (Privacy Policy) `no-index`
 
-  Body:
+`/terms-of-service` → (Terms of Service) `no-index`
 
-  ```json
-  {
-    "email": "valeta.iac@gmail.com",
-    "password": "UserEnteredPassword123!"
-  }
-  ```
+### 2. WEB APPLICATION SUBDOMAIN
 
-  Response:
+`/`
 
-  ```json
-  {
-    "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "User Signed In Successfully."
-    }
-  }
-  ```
+- unauthenticated → (Sign-In Page)
+- authenticated → (Friends List Page)
 
-- `POST /auth/logout`
+`/create-account` (Create Account Page)
 
-  Header:
+`/forgot-password` → (Forgot Password Page)
 
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
+`/reset-password` → (Reset Password Page)
 
-  Response:
+`/sign-out`
 
-  ```json
-  {
-    "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "User Logged Out Successfully."
-    }
-  }
-  ```
+- unauthenticated → (Sign-In Page)
+- authenticated → (Sign-Out Page)
 
-- `POST /auth/forgot-password`
-  Body:
+`/modify-profile`
 
-  ```json
-  {
-    "email": "valeta.iac@gmail.com"
-  }
-  ```
+- unauthenticated → (Sign-In Page)
+- authenticated → (Modify Profile Page)
 
-  Response:
+`/add-friend`
 
-  ```json
-  {
-    "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "Temporary password sent to email."
-    }
-  }
+- unauthenticated → (Sign-In Page)
+- authenticated → (Add Friend Page)
 
-  ```
+`/remove-friend`
 
-- `POST /auth/reset-password`
+- unauthenticated → (Sign-In Page)
+- authenticated → (Remove Friend Page)
 
-  Body:
+### 3. API SUBDOMAIN
 
-  ```json
-  {
-    "email": "valeta.iac@gmail.com"
-    "temporaryPassword": "hyt-73u-sak"
-    "newPassword": "CatsLuv3Me!!!"
-  }
-  ```
+#### Authentication Endpoints
 
-  Response:
+- `/auth/register`
+- `/auth/login`
+- `/auth/logout`
+- `/auth/forgot-password`
+- `/auth/reset-password`
+- `/auth/me`
 
-  ```json
-  {
-    "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "Password Reset Successfully."
-    }
-  }
-  ```
+`POST /auth/register` → (Create Account)
 
-- `GET /auth/me`
+Body:
 
-  Header:
+```json
+{
+  "firstName": "Ian",
+  "lastName": "Valeta",
+  "email": "valeta.iac@gmail.com",
+  "password": "UserEnteredPassword123!"
+}
+```
 
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
+Response:
 
-  Response:
-
-  ```json
+```json
+{
   "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "user": {
-        "authenticated": true,
-        "userId": "16289H",
-        "sessionId": "sess_456",
-        "expiresAt": "2026-07-20T14:00:00Z"
-
-      }
-    }
-  ```
-
-User
-
-- `GET /users/me`
-
-  Header:
-
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
-
-  Response:
-
-  ```json
-  "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "Profile retrieved successfully.",
-      "user": {
-        "userId": "16289H",
-        "firstName": "Ian",
-        "lastName": "Valeta",
-        "email": "valeta.iac@gmail.com",
-        "isBusy": false
-      }
-    }
-  ```
-
-- `PATCH /users/me`
-
-  Header:
-
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
-
-  Body:
-
-  ```json
-  {
-    "firstName": "Ian",
-    "lastName": "Valeta",
-    "email": "valeta.iac@gmail.com",
-    "currentPassword": "******",
-    "newPassword": "CatsLuv3Me!!!",
-    "isBusy": false
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "message": "Account created successfully."
   }
-  ```
+}
+```
 
-  Response:
+> Refer to `/features/authentication/create-account.md`
 
-  ```json
+---
+
+`POST /auth/login` → (Log In)
+
+Body:
+
+```json
+{
+  "email": "valeta.iac@gmail.com",
+  "password": "UserEnteredPassword123!"
+}
+```
+
+Response:
+
+```json
+{
   "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "Profile updated successfully.",
-      "user": {
-        "userId": "16289H",
-        "firstName": "Ian",
-        "lastName": "Valeta",
-        "email": "valeta.iac@gmail.com",
-        "isBusy": false
-      }
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "sessionToken": "abc123xyz",
+    "message": "User Signed In Successfully."
+  }
+}
+```
+
+> Refer to `/features/authentication/sign-in.md`
+
+---
+
+`POST /auth/logout`
+
+Header:
+
+```http
+Cookie: session_token=abc123xyz
+```
+
+Response:
+
+```json
+{
+  "error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "message": "User Logged Out Successfully."
+  }
+}
+```
+
+> Refer to `/features/authentication/sign-out.md`
+
+---
+
+`POST /auth/forgot-password`
+Body:
+
+```json
+{
+  "email": "valeta.iac@gmail.com"
+}
+```
+
+Response:
+
+```json
+{
+  "error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "message": "Temporary password sent to email."
+  }
+}
+
+```
+
+> Refer to `/features/authentication/forgot-password.md`
+
+---
+
+`POST /auth/reset-password`
+
+Body:
+
+```json
+{
+  "email": "valeta.iac@gmail.com"
+  "temporaryPassword": "hyt-73u-sak"
+  "newPassword": "CatsLuv3Me!!!"
+}
+```
+
+Response:
+
+```json
+{
+  "error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "message": "Password Reset Successfully."
+  }
+}
+```
+
+> Refer to `/features/authentication/forgot-password.md`
+
+---
+
+`GET /auth/me`
+
+Header:
+
+```http
+Cookie: session_token=abc123xyz
+```
+
+Response:
+
+```json
+"error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "user": {
+      "authenticated": true,
+      "userId": "16289H",
+      "sessionId": "sess_456",
+      "expiresAt": "2026-07-20T14:00:00Z"
+
     }
-  ```
+  }
+```
 
-- `DELETE /users/me`
+#### User Endpoints
 
-  Header:
+- `/users/me`
 
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
+`GET /users/me`
 
-  Response:
+Header:
 
-  ```json
-  "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
-    "data": {
-      "message": "Profile deleted successfully.",
+```http
+Cookie: session_token=abc123xyz
+```
+
+Response:
+
+```json
+"error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "message": "Profile retrieved successfully.",
+    "user": {
+      "userId": "16289H",
+      "firstName": "Ian",
+      "lastName": "Valeta",
+      "email": "valeta.iac@gmail.com",
+      "isBusy": false
     }
-  ```
+  }
+```
 
-Friends
+`PATCH /users/me`
 
-- `GET /friends`
+Header:
 
-  Header:
+```http
+Cookie: session_token=abc123xyz
+```
 
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
+Body:
 
-  Response:
+```json
+{
+  "firstName": "Ian",
+  "lastName": "Valeta",
+  "email": "valeta.iac@gmail.com",
+  "currentPassword": "******",
+  "newPassword": "CatsLuv3Me!!!",
+  "isBusy": false
+}
+```
 
-  ```json
-  "error": null || {
-      "code": "Error Title",
-      "message": "Error Description"
-    },
+Response:
+
+```json
+"error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "message": "Profile updated successfully.",
+    "user": {
+      "userId": "16289H",
+      "firstName": "Ian",
+      "lastName": "Valeta",
+      "email": "valeta.iac@gmail.com",
+      "isBusy": false
+    }
+  }
+```
+
+> Refer to `/features/profile/modify-profile.md`
+
+> Refer to `/features/profile/modify-self-status.md`
+
+---
+
+`DELETE /users/me`
+
+Header:
+
+```http
+Cookie: session_token=abc123xyz
+```
+
+Response:
+
+```json
+"error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
+    "message": "Profile deleted successfully.",
+  }
+```
+
+#### Friends Endpoints
+
+- `/friends`
+- `/friends/:friend-id`
+
+`GET /friends`
+
+Header:
+
+```http
+Cookie: session_token=abc123xyz
+```
+
+Response:
+
+```json
+{
+"error": null || {
+    "code": "Error Title",
+    "message": "Error Description"
+  },
+  "data": {
     "friends": [
       {
         "userId": "16289H",
@@ -312,96 +372,124 @@ Friends
       },
       ...
     ]
-  ```
-
-- `POST /friends/:friend-id`
-
-  Header:
-
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
-
-  Response:
-
-  ```json
-  {
-    "error": null || {
-        "code": "Error Title",
-        "message": "Error Description"
-      },
-    "message": "Added Friend"
   }
-  ```
+```
 
-- `Delete /friends/:friend-id`
+> Refer to `/features/friends-list/view-friends-list.md`
 
-  Header:
+---
 
-  ```http
-  Cookie: session_token=abc123xyz
-  ```
+`POST /friends/:friend-id`
 
-  Response:
+Header:
 
-  ```json
-  {
-    "error": null || {
-        "code": "Error Title",
-        "message": "Error Description"
-      },
-    "message": "Deleted Friend"
-  }
-  ```
+```http
+Cookie: session_token=abc123xyz
+```
 
-Sessions
+Response:
 
-- `GET /sessions/current`
+```json
+{
+  "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
 
-  Header:
-
-  ```HTTP
-  Cookie: session_token=abc123xyz
-  ```
-
-  Response:
-
-  ```json
-  {
-    "error": null,
-    "data": {
-      "message": "Session retrieved successfully.",
-      "session": {
-        "sessionId": "sess_456",
+  "data": {
+    "message": "Added Friend",
+    "friends": [
+      {
         "userId": "16289H",
-        "createdAt": "2026-07-19T14:00:00Z",
-        "lastActivityAt": "2026-07-20T13:52:14Z",
-        "expiresAt": "2026-07-20T14:00:00Z"
-      }
+        "firstName": "Ian",
+        "lastName": "Valeta",
+        "email": "valeta.iac@gmail.com",
+        "isBusy": false
+      },
+      ...
+    ]
+}
+```
+
+> Refer to `/features/friends-list/add-friend.md`
+
+---
+
+`DELETE /friends/:friend-id`
+
+Header:
+
+```http
+Cookie: session_token=abc123xyz
+```
+
+Response:
+
+```json
+{
+  "error": null || {
+      "code": "Error Title",
+      "message": "Error Description"
+    },
+  "message": "Deleted Friend"
+}
+```
+
+> Refer to `/features/friends-list/remove-friend.md`
+
+---
+
+
+#### Sessions Endpoints
+
+- `/sessions/current`
+
+`GET /sessions/current`
+
+Header:
+
+```HTTP
+Cookie: session_token=abc123xyz
+```
+
+Response:
+
+```json
+{
+  "error": null,
+  "data": {
+    "message": "Session retrieved successfully.",
+    "session": {
+      "sessionId": "sess_456",
+      "userId": "16289H",
+      "createdAt": "2026-07-19T14:00:00Z",
+      "lastActivityAt": "2026-07-20T13:52:14Z",
+      "expiresAt": "2026-07-20T14:00:00Z"
     }
   }
-  ```
+}
+```
 
-- `DELETE /sessions/current`
+`DELETE /sessions/current`
 
-  Header:
+Header:
 
-  ```HTTP
-  Cookie: session_token=abc123xyz
-  ```
+```HTTP
+Cookie: session_token=abc123xyz
+```
 
-  Response:
+Response:
 
-  ```json
-  {
-    "error": null,
-    "data": {
-      "message": "Session terminated successfully."
-    }
+```json
+{
+  "error": null,
+  "data": {
+    "message": "Session terminated successfully."
   }
-  ```
+}
+```
 
-<!-- EMAIL NOTIFICATIONS SUBDOMAIN -->
+### 3. EMAIL NOTIFICATIONS SUBDOMAIN
 
 **Automated Email:** notify.app_name.com
 
