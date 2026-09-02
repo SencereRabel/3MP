@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Navigo from "navigo";
 import SignUp from "./LogIn";
+import ResetPassword from "./ResetPassword";
 
 function App() {
   const [page, setPage] = useState(window.location.pathname);
@@ -13,6 +14,7 @@ function App() {
     router.on({
       "/": () => setPage("/"),
       "/forgot-password": () => setPage("/forgot-password"),
+      "/reset-password": () => setPage("/reset-password"),
       "/sign-up": () => setPage("/sign-up"),
       "*": () => setPage("/404"),
     });
@@ -35,7 +37,7 @@ function App() {
 
         <a href="/" data-navigo>
           Back to Login
-        </a>  
+        </a>
       </section>
     );
   }
@@ -50,6 +52,10 @@ function App() {
         </a>
       </section>
     );
+  }
+
+  if (page === "/reset-password") {
+    return <ResetPassword />;
   }
 }
 
