@@ -20,4 +20,18 @@ form .input-group .input-group-label {
   padding: 5px 10px;
   background-color: white;
   color: #666;
+form .side-by-side-input {
+  display: flex;
+  gap: 16px;
+}
+
+form .side-by-side-input > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+form .side-by-side-input input {
+  width: 100%;
 }

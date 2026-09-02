@@ -2,8 +2,8 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 import Navigo from "navigo";
-import SignUp from "./LogIn";
-import ResetPassword from "./ResetPassword";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 
 function App() {
   const [page, setPage] = useState(window.location.pathname);
@@ -16,6 +16,7 @@ function App() {
       "/forgot-password": () => setPage("/forgot-password"),
       "/reset-password": () => setPage("/reset-password"),
       "/sign-up": () => setPage("/sign-up"),
+      "/sign-in": () => setPage("/sign-in"),
       "*": () => setPage("/404"),
     });
 
@@ -26,20 +27,12 @@ function App() {
     };
   }, []);
 
-  if (page === "/log-in" || page === "/") {
-    return <SignUp />;
+  if (page === "/" || page === "/sign-in") {
+    return <SignIn />;
   }
 
   if (page === "/sign-up") {
-    return (
-      <section className="container">
-        <h1>Sign Up</h1>
-
-        <a href="/" data-navigo>
-          Back to Login
-        </a>
-      </section>
-    );
+    return <SignUp />;
   }
 
   if (page === "/forgot-password") {
