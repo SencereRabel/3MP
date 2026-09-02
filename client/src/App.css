@@ -2,6 +2,24 @@ form > a {
   margin-left: auto;
 }
 
+form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  position: relative;
+}
+
+form .input-group .input-group-label {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 10px;
+  background-color: white;
+  color: #666;
 form .side-by-side-input {
   display: flex;
   gap: 16px;

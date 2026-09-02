@@ -14,6 +14,7 @@ function App() {
     router.on({
       "/": () => setPage("/"),
       "/forgot-password": () => setPage("/forgot-password"),
+      "/reset-password": () => setPage("/reset-password"),
       "/sign-up": () => setPage("/sign-up"),
       "/sign-in": () => setPage("/sign-in"),
       "*": () => setPage("/404"),
@@ -44,6 +45,10 @@ function App() {
         </a>
       </section>
     );
+  }
+
+  if (page === "/reset-password") {
+    return <ResetPassword />;
   }
 }
 
