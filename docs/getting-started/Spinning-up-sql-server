@@ -1,0 +1,4 @@
+Download docker desktop 
+start it in the background
+use your terminal to navigate to the backend/database directory
+and run docker compose up -d
