@@ -1,7 +1,7 @@
 import { useState } from "react";
 import hero from "./assets/hero.png";
 
-export default function SignUp() {
+export default function LogIn() {
   const [hasError, setHasError] = useState(false);
   const [errorObj, setErrorObj] = useState({
     code: "Error",

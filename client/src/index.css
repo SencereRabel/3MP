@@ -12,6 +12,12 @@
     "Helvetica Neue",
     sans-serif;
   color: #666;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #a230e9;
+  --error: #e94f30;
 }
 
 body {
@@ -47,7 +53,7 @@ form {
 }
 
 a {
-  color: #306ee9;
+  color: var(--accent);
 }
 
 label {
@@ -56,7 +62,7 @@ label {
 }
 
 .error * {
-  color: #d01717;
+  color: var(--error);
 }
 
 input {
@@ -74,19 +80,19 @@ button {
   border-radius: 100px;
   border: #ccc 1px solid;
   color: #fff;
-  background: #306ee9;
+  background: var(--accent);
 }
 
 button:hover {
-  background: #2459c7;
+  filter: brightness(1.1);
 }
 
 button:active {
-  background: #1d47a3;
+  filter: brightness(1.5);
 }
 
 button:disabled {
-  background: #a9bde9;
+  background: brightness(0.2);
 }
 
 .center {
