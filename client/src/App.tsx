@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Navigo from "navigo";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
+import ResetPassword from "./ResetPassword";
+import ForgotPassword from "./ForgotPassword";
 
 function App() {
   const [page, setPage] = useState(window.location.pathname);
@@ -36,15 +38,7 @@ function App() {
   }
 
   if (page === "/forgot-password") {
-    return (
-      <section className="container">
-        <h1>Forgot Password</h1>
-
-        <a href="/" data-navigo>
-          Back to Login
-        </a>
-      </section>
-    );
+    return <ForgotPassword/>;
   }
 
   if (page === "/reset-password") {
