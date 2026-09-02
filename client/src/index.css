@@ -1,0 +1,94 @@
+* {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  color: #666;
+}
+
+body {
+  margin: 0px;
+  margin-top: 40px;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding-inline: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #111;
+  margin: 0px;
+}
+
+.logo {
+  width: 80px;
+}
+
+section.container,
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+a {
+  color: #306ee9;
+}
+
+label {
+  color: #111;
+  font-weight: bold;
+}
+
+.error * {
+  color: #d01717;
+}
+
+input {
+  display: flex;
+  border: #ccc 1px solid;
+  padding: 10px 20px;
+  border-radius: 100px;
+  color: #111;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: #ccc 1px solid;
+  color: #fff;
+  background: #306ee9;
+}
+
+button:hover {
+  background: #2459c7;
+}
+
+button:active {
+  background: #1d47a3;
+}
+
+button:disabled {
+  background: #a9bde9;
+}
+
+.center {
+  margin: auto;
+}
